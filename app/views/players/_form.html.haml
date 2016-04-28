@@ -1,7 +1,7 @@
-= simple_form_for @player, url: players_path, html: { multipart: true } do |f|
+= simple_form_for @player, html: { multipart: true } do |f|
   = f.input :name, placeholder: 'Enter Full Name', input_html: { class: 'form-control' }
   = f.input :position, placeholder: 'Enter Position', input_html: { class: 'form-control' }
-  = f.input :school, placeholder: 'Enter School', input_html: { class: 'form-control' }  
+  = f.input :school, placeholder: 'Enter School', input_html: { class: 'form-control' }
   = f.input :bio, placeholder: 'Enter Bio', input_html: { class: 'form-control' }
   = f.input :highlight, placeholder: 'Enter Link to Highlight Video', input_html: { class: 'form-control' }
   = f.input :image, as: :file, input_html: { class: 'form-control' }

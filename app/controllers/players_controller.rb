@@ -27,13 +27,19 @@ class PlayersController < ApplicationController
   end
 
   def update
+    if @player.update(player_params)
+      redirect_to @player
+    else
+      render 'edit'
+    end
   end
 
   def destroy
+    @player.destroy
+    redirect_to players_path
   end
 
   private
-
   def find_player
     @player = Player.find(params[:id])
   end

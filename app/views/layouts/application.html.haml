@@ -14,4 +14,6 @@
           = link_to "New Player", new_player_path, class: "nav navbar-link"
 
     .container
+      %p.notice= notice
+      %p.alert= alert
       = yield

@@ -1,8 +1,12 @@
 %h1= @player.name
 
 = image_tag @player.image.url(:medium)
-%h5= @player.position
-%h5= @player.school
+%h5
+  Position: #{@player.position}
+%h5
+  School: #{@player.school}
+%h5 Bio:
+
 %p= @player.bio
 
 = link_to "Transcript", @player.transcript.url(:original, false)
@@ -12,3 +16,5 @@
 = link_to @player.highlight, @player.highlight
 %br
 = link_to "All Players", players_path
+= link_to "Edit", edit_player_path(@player)
+= link_to "Delete", player_path(@player), method: :delete, data: { confirm: "Are you sure?" }

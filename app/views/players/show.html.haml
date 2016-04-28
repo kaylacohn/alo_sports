@@ -1,0 +1,14 @@
+%h1= @player.name
+
+= image_tag @player.image.url(:medium)
+%h5= @player.position
+%h5= @player.school
+%p= @player.bio
+
+= link_to "Transcript", @player.transcript.url(:original, false)
+%br
+= link_to "SAT Scores", @player.sat_scores.url(:original, false)
+%br
+= link_to @player.highlight, @player.highlight
+%br
+= link_to "All Players", players_path

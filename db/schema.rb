@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160428002828) do
+ActiveRecord::Schema.define(version: 20160428012805) do
 
   create_table "players", force: :cascade do |t|
     t.string   "name"
@@ -19,8 +19,20 @@ ActiveRecord::Schema.define(version: 20160428002828) do
     t.string   "school"
     t.text     "bio"
     t.string   "highlight"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
+    t.string   "transcript_file_name"
+    t.string   "transcript_content_type"
+    t.integer  "transcript_file_size"
+    t.datetime "transcript_updated_at"
+    t.string   "sat_scores_file_name"
+    t.string   "sat_scores_content_type"
+    t.integer  "sat_scores_file_size"
+    t.datetime "sat_scores_updated_at"
   end
 
 end

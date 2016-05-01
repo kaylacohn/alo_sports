@@ -3,7 +3,7 @@ class DeviseCreateUsers < ActiveRecord::Migration
     create_table :users do |t|
 
       ## Admin?
-      t.boolean :admin 
+      t.boolean :admin
 
       #user's name
       t.string :name, null: false, default: ""

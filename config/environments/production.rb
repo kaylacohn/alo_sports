@@ -90,7 +90,7 @@ Rails.application.configure do
   }
 
   #Email settings
-  config.action_mailer.default_url_options = { host: 'https://limitless-beach-84400.herokuapp.com' }
+  config.action_mailer.default_url_options = { host: 'limitless-beach-84400.herokuapp.com' }
 
   config.action_mailer.delivery_method = :smtp
 

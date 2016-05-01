@@ -1,4 +1,5 @@
 class PlayersController < ApplicationController
+  before_action :authenticate_user!
   before_action :find_player, only: [:show, :edit, :update, :destroy]
 
   def index
@@ -9,12 +10,11 @@ class PlayersController < ApplicationController
   end
 
   def new
-    @player = Player.new
-
+    @player = current_user.players.build
   end
 
   def create
-    @player = Player.new(player_params)
+    @player = current_user.players.build(player_params)
 
     if @player.save
       redirect_to @player

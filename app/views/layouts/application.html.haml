@@ -6,14 +6,47 @@
     = javascript_include_tag 'application', 'data-turbolinks-track' => true
     = csrf_meta_tags
   %body
-    %nav.navbar.navbar-default
-      .container
+    %nav.navbar.navbar-default.navbar-fixed-top
+      .container-fluid
+        / Brand and toggle get grouped for better mobile display
         .navbar-header
-          = link_to "Home", root_path, class: "navbar-brand"
-        .nav.navbar-nav.navbar-right
-          = link_to "New Player", new_player_path, class: "nav navbar-link"
+          %button.navbar-toggle.collapsed{"data-target" => "#bs-example-navbar-collapse-1", "data-toggle" => "collapse", :type => "button"}
+            %span.sr-only Toggle navigation
+            %span.icon-bar
+            %span.icon-bar
+            %span.icon-bar
+          %a.navbar-brand.page-scroll{:href => root_path} ALO Sports
+        / Collect the nav links, forms, and other content for toggling
+        #bs-example-navbar-collapse-1.collapse.navbar-collapse
+          %ul.nav.navbar-nav.navbar-right
+            -if user_signed_in?
+              %li
+                = link_to "About Us", root_path(:anchor => "about")
+            - if user_signed_in?
+              %li
+                = link_to "Mission", root_path(:anchor => "mission")
+            - if user_signed_in?
+              %li
+                = link_to "Combine Format", root_path(:anchor => "combine")
+            - if user_signed_in?
+              %li
+                = link_to "Affiliates", root_path(:anchor => "affiliates")
+            - if user_signed_in?
+              %li
+                = link_to "Players", players_path, class: "nav navbar-link"
+              %li
+                = link_to "New Player", new_player_path, class: "nav navbar-link"
+              %li
+                = link_to "Log Out", destroy_user_session_path, method: :delete, class: "nav navbar-link"
+            - else
+              %li
+                = link_to "Sign Up", new_user_registration_path, class: "nav navbar-link"
+              %li
+                = link_to "Sign In", new_user_session_path, class: "nav navbar-link"
+        / /.navbar-collapse
+      / /.container-fluid
 
     .container
       %p.notice= notice
       %p.alert= alert
-      = yield
+    = yield

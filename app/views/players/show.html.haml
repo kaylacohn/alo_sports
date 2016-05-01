@@ -1,20 +1,25 @@
-%h1= @player.name
+.container
+  .row
+    %h1.player_name= @player.name
+    = image_tag @player.image.url(:medium)
+    %h5
+      Position: #{@player.position}
+    %h5
+      School: #{@player.school}
+    %h5
+      Highlight Video:
+      = link_to @player.highlight, @player.highlight
+    %h5 Bio:
+    %p= @player.bio
 
-= image_tag @player.image.url(:medium)
-%h5
-  Position: #{@player.position}
-%h5
-  School: #{@player.school}
-%h5 Bio:
+  - if can? :update, @player
+    = link_to "Transcript", @player.transcript.url(:original, false), { class: "btn btn-primary" }
+    = link_to "SAT Scores", @player.sat_scores.url(:original, false), { class: "btn btn-primary" }
+    = link_to "Edit", edit_player_path(@player), { class: "btn btn-primary btn-group" }
+    = link_to "Delete", player_path(@player), class: "btn btn-primary", method: :delete, data: { confirm: "Are you sure?"}
 
-%p= @player.bio
+  - else
+    %br
 
-= link_to "Transcript", @player.transcript.url(:original, false)
-%br
-= link_to "SAT Scores", @player.sat_scores.url(:original, false)
-%br
-= link_to @player.highlight, @player.highlight
-%br
-= link_to "All Players", players_path
-= link_to "Edit", edit_player_path(@player)
-= link_to "Delete", player_path(@player), method: :delete, data: { confirm: "Are you sure?" }
+    %br
+    = link_to "All Players", players_path, { class: "btn btn-primary btn-group" }

@@ -1,5 +1,7 @@
-%h1 Add A New Player
+.container
+  .row
+    %h1 Add A New Player
 
-= render 'form'
-
-= link_to "Cancel", root_path
+    = render 'form'
+    %br
+    = link_to "Cancel", root_path, { class: "btn btn-primary"}

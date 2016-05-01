@@ -8,4 +8,5 @@ class Player < ActiveRecord::Base
   has_attached_file :sat_scores
   validates_attachment :sat_scores, content_type: { content_type: %w(application/pdf application/msword application/vnd.openxmlformats-officedocument.wordprocessingml.document) }
 
+  belongs_to :user
 end
